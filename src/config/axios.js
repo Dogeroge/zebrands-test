@@ -1,0 +1,10 @@
+import axios from "axios";
+
+const http = axios.create({
+	baseURL: 'https://api.github.com/',
+	headers: {
+		'accept': 'application/vnd.github+json'
+	}
+});
+
+export default http;

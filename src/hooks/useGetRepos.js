@@ -5,6 +5,11 @@ import { showNotification } from '../features/notifications/notifReducer';
 
 const useGetRepos = () => {
   const dispatch = useDispatch();
+  /**
+   * Make the request to get the Repository list
+   * @param {Object} payload Object with the data to handle request query
+   * @param {Object} ctx Contains extra functions to handle loading behavior
+   */
   const requestGitRepos = (payload, ctx) => {
     ctx.setLoading(true);
     const params = {
@@ -18,7 +23,6 @@ const useGetRepos = () => {
       dispatch(getRepos(response.data));
     })
     .catch((error) => {
-      console.log('error', error)
       ctx.setLoading(false);
       dispatch(showNotification({type: 'danger', title: error.response.data.message, message: error.response.data.message}))
     })

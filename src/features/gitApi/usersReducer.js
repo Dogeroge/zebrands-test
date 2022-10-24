@@ -20,10 +20,13 @@ export const usersReducer = createSlice({
       state.items = []
       state.total = 0
       state.itemDetail = null
-    }
+    },
+    clearUserDetails: (state) => {
+      state.itemDetail = null
+    },
   }
 })
 
-export const { getUsers, getUserDetails,clearState } = usersReducer.actions
+export const { getUsers, getUserDetails, clearState, clearUserDetails } = usersReducer.actions
 
 export default usersReducer.reducer

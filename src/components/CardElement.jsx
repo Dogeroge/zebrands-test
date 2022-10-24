@@ -3,19 +3,26 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { Badge } from 'react-bootstrap';
+import Badge from 'react-bootstrap/Badge';
 import useGetUsers from '../hooks/useGetUsers';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearUserDetails } from '../features/gitApi/usersReducer';
+import { numberWithComas } from '../config/utils';
 
 const CardElement = ({item, type}) => {
+  const dispatch = useDispatch();
   const { requestUserDetails } = useGetUsers();
   const userDetails = useSelector((state) => state.users.itemDetail);
 
   const showDetails = (user) => {
+    if (userDetails && userDetails.login === user) {
+      dispatch(clearUserDetails())
+      return
+    }
     requestUserDetails({user});
   }
   return (
-    <Card className="bg-wetasphalt text-white my-2 shadow">
+    <Card className="bg-wetasphalt text-white my-3 shadow rounded-4">
       <Card.Body>
         <Row>
           {type === 'users' && (
@@ -40,14 +47,16 @@ const CardElement = ({item, type}) => {
                       <span>{userDetails.name ? userDetails.name : 'no data'}</span>
                     </Col>
                     <Col xs="6" className="mb-1">
-                      <a
-                        className="text-white"
-                        href={userDetails.blog}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <i className="bi-globe" /> {userDetails.blog ? userDetails.blog : 'none'}
-                      </a>
+                      {userDetails.blog && (
+                        <a
+                          className="text-white"
+                          href={ userDetails.blog}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <i className="bi-globe" /> {userDetails.blog}
+                        </a>
+                      )}
                     </Col>
                     <Col xs="12" className="mb-1">
                       <span className='fst-italic'>"{userDetails.bio ? userDetails.bio : 'nothing'}"</span>
@@ -108,13 +117,13 @@ const CardElement = ({item, type}) => {
                     <Col xs="4">
                       <span className="text-white">
                         <i className="bi-star me-1" />
-                        {item.stargazers_count}
+                        {numberWithComas(item.stargazers_count)}
                       </span>
                     </Col>
                     <Col xs="4">
                       <span className="text-white">
                         <i className="bi-eye me-1" />
-                        {item.stargazers_count}
+                        {numberWithComas(item.watchers_count)}
                       </span>
                     </Col>
                     <Col xs="4">

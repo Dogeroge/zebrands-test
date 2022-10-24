@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import CardElement from './CardElement';
+import { numberWithComas } from '../config/utils';
 
 const CardsList = ({items, total, handleMore, loading, type}) => {
   const [visible, setVisible] = useState(false);
@@ -18,11 +19,7 @@ const CardsList = ({items, total, handleMore, loading, type}) => {
   const handleScrollT = () => {
     window.scrollTo(0,0)
   }
-
-  const numberWithComas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
+  
   useEffect(() => {
     window.addEventListener('scroll', handleVisible);
     handleVisible();
@@ -61,7 +58,7 @@ const CardsList = ({items, total, handleMore, loading, type}) => {
           onClick={handleScrollT}
           style={{width: '60px', height: '60px'}}
         >
-          <i className="bi-arrow-up fs-4"></i>
+          <i className="bi-arrow-up fs-4" />
         </Button>
       )}
     </>

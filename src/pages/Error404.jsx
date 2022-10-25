@@ -1,11 +1,11 @@
-import React from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import { useNavigate} from 'react-router-dom';
 
-export default function Main() {
-  const navigate = useNavigate()
+const Error404 = () => {
+  const navigate = useNavigate();
   return (
     <div className="container">
       <Row className="fixed-top p-3 align-items-center">
@@ -23,21 +23,17 @@ export default function Main() {
       </Row>
       <Row className="vh-100 align-items-center justify-content-center" style={{alignContent: 'center'}}>
         <Col xs="11" xl="7" className="my-2">
-          <img src={require('../assets/laptop.png')} className="img-fluid" alt='main'/>
+          <img src={require('../assets/Error404.png')} className="img-fluid" alt="error-img"/>
         </Col>
         <Col xs="11" xl="5" className="my-2">
           <Row>
             <Col xs="12" className='my-2'>
-              <p className="text-center mb-0">
-                <i className="bi-github text-white display-1" />
-              </p>
-              <p className="fs-1 lh-sm fw-bold text-white">
-                Welcome to the <br/> Github API Search
-              </p>
+              <h1 className="display-3 lh-sm fw-bold text-white">
+                Page not found
+              </h1>
               <p className="fw-light text-white">
-                This app will allow you to search for repositories and users in GiHub.
-                <br/>
-                Try our options!
+                Oops! We're sorry, the page you requested could not be found <br/>
+                Please go back to the homepage
               </p>
             </Col>
             <Col xs="12" xl="6" className="my-2">
@@ -45,20 +41,9 @@ export default function Main() {
                 <Button
                   variant="primary"
                   size="lg"
-                  onClick={() => navigate('search/users')}
+                  onClick={() => navigate('/')}
                 >
-                  Search by user
-                </Button>
-              </div>
-            </Col>
-            <Col xs="12" xl="6" className="my-2">
-              <div className="d-grid">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  onClick={() => navigate('search/repos')}
-                >
-                  Search by repository
+                  Back to home
                 </Button>
               </div>
             </Col>
@@ -71,5 +56,7 @@ export default function Main() {
         </Col>
       </Row>
     </div>
-  )
-}
+  );
+};
+
+export default Error404;

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './store';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Layout from './components/Layout';
 import Users from './pages/Users'
 import Repos from './pages/Repos';
@@ -10,11 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css'
 import Main from './pages/Main';
 import './config/axios';
+import Error404 from './pages/Error404';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
-    element: <Main />
+    element: <Main />,
+    errorElement: <Error404 />
   },
   {
     path: '/search',

@@ -1,6 +1,7 @@
 {
+  "homepage":"https://dogeroge.github.io/zebrands-test",
   "name": "zebrands-test",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }

@@ -1,6 +1,6 @@
 # zebrands-test
 Repository for technnical test
 
-Este proyecto fue realizado por Edwin Rosas como prueba para Zebrands.
+This project was carried out by Edwin Rosas as a test for Zebrands.
 
-Enlace para live preview: https://dogeroge.github.io/zebrands-test/
+Link to live preview:

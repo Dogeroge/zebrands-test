@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/zebrands-test/static/css/main.7013df6a.css",
+    "main.js": "/zebrands-test/static/js/main.ab0f35ae.js",
+    "static/media/laptop.png": "/zebrands-test/static/media/laptop.eb07d121d7a66f0bae97.png",
+    "static/media/Error404.png": "/zebrands-test/static/media/Error404.6db5d0fd125c0fae6d6b.png",
+    "index.html": "/zebrands-test/index.html",
+    "main.7013df6a.css.map": "/zebrands-test/static/css/main.7013df6a.css.map",
+    "main.ab0f35ae.js.map": "/zebrands-test/static/js/main.ab0f35ae.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7013df6a.css",
+    "static/js/main.ab0f35ae.js"
+  ]
+}

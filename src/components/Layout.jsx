@@ -16,7 +16,7 @@ const Layout = () => {
       <Container fluid className='vh-100'>
         <Row className="align-items-center justify-content-center">
           <MainNavbar />
-          <Col sm="12" xl="6" className="text-center mb-5">
+          <Col xs="12" xl="6" className="text-center mb-5">
             <Outlet />
           </Col>
         </Row>

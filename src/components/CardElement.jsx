@@ -1,4 +1,3 @@
-import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -22,7 +21,7 @@ const CardElement = ({item, type}) => {
     requestUserDetails({user});
   }
   return (
-    <Card className="bg-wetasphalt text-white my-3 shadow rounded-4">
+    <Card className="bg-royalbluedark text-white my-3 shadow rounded-4">
       <Card.Body>
         <Row>
           {type === 'users' && (
@@ -67,22 +66,22 @@ const CardElement = ({item, type}) => {
                   </Row>
                 </Col>
               )}
-              <Col xs="12" className="text-end">
+              <Col xs="12" className="text-end mt-2">
                 <Button
                   variant="outline-light"
                   size="sm"
                   onClick={() => showDetails(item.login)}
                 > 
                   {userDetails && userDetails.login === item.login ? (
-                    <>
+                    <span>
                       <i className="bi-caret-up me-1" />
                       Hide
-                    </>
+                    </span>
                     ) : (
-                      <>
+                      <span>
                         <i className="bi-caret-down me-1" />
                         Show
-                      </>
+                      </span>
                     )}
                 </Button>
               </Col>

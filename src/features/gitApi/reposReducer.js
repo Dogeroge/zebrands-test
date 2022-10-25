@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [],
+  items: null,
   total: 0,
 }
 
@@ -10,11 +10,13 @@ export const reposReducer = createSlice({
   initialState,
   reducers: {
     getRepos: (state, action) => {
-      state.items = state.items.concat(action.payload.items);
+      state.items = !state.items ?
+        action.payload.items :
+        state.items.concat(action.payload.items);
       state.total = action.payload.total_count;
     },
     clearRepos: (state) => {
-      state.items = []
+      state.items = null
       state.total = 0
     }
   }

@@ -1,8 +1,8 @@
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { clearState } from '../features/gitApi/usersReducer';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import SearchInput from '../components/SearchInput';
 import useGetUsers from '../hooks/useGetUsers';
 import CardsList from '../components/CardsList';
@@ -17,6 +17,10 @@ export default function Users() {
     page: 1,
     sort: 'desc',
   });
+
+  useEffect(() => {
+    dispatch(clearState());
+  }, [dispatch])
   
   const send = () => {
     dispatch(clearState());
@@ -51,7 +55,7 @@ export default function Users() {
           <SearchInput
             search={search}
             handleSearch={setSearch}
-            handleSend={() => send()} 
+            handleSend={() => send()}
           />
         </Col>
       </Row>

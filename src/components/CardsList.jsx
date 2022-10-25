@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import CardElement from './CardElement';
 import { numberWithComas } from '../config/utils';
+import { Spinner } from 'react-bootstrap';
 
 const CardsList = ({items, total, handleMore, loading, type}) => {
   const [visible, setVisible] = useState(false);
@@ -27,7 +28,7 @@ const CardsList = ({items, total, handleMore, loading, type}) => {
   
   return (
     <>
-      {items.length > 0 && (
+      {items && items.length > 0 && (
         <Row className="justify-content-center">
           <Col xs="11" xl="11">
             <p className="fs-5 fw-light text-white text-start">Showing results: {items.length} of {numberWithComas(total)}</p>
@@ -39,10 +40,26 @@ const CardsList = ({items, total, handleMore, loading, type}) => {
               />
             ))}
             {(total > 15 && items.length !== total) && (
-              <Button variant="outline-light" onClick={() => handleMore()}>Load more</Button>
+              <Button variant="outline-light" onClick={() => handleMore()}>
+                {loading && (
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size='sm'
+                    className="me-2"
+                  />
+                )}
+                Load more
+              </Button>
             )}
           </Col>
         </Row>
+      )}
+      {items && items.length < 1 && (
+        <div className="mt-4">
+          <i className="fs-1 bi-emoji-frown text-secondary"></i>
+          <p className="fs-5 text-secondary">No results found</p>
+        </div>
       )}
       {loading && (
         <Row className="justify-content-center mt-5">
@@ -54,11 +71,11 @@ const CardsList = ({items, total, handleMore, loading, type}) => {
       )}
       {visible && (
         <Button
-          className="position-fixed bottom-0 rounded-circle text-white shadow-lg end-0 mb-5 me-3 p-0 "
+          className="position-fixed rounded-circle text-white shadow-lg bottom-0 end-0 mb-5 me-3 p-0 "
           onClick={handleScrollT}
           style={{width: '60px', height: '60px'}}
         >
-          <i className="bi-arrow-up fs-4" />
+          <i className="bi-arrow-up fs-3" />
         </Button>
       )}
     </>

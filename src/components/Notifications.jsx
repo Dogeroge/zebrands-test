@@ -9,7 +9,7 @@ const Notifications = (props) => {
   const dispatch = useDispatch();
   return (
     <>
-      <ToastContainer position="top-end" className='p-3'>
+      <ToastContainer position="top-end" className='p-3 position-fixed'>
         <Toast
           bg={notification.type}
           show={notification.isOpen}

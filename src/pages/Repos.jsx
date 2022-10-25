@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { Col, Row } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { clearRepos } from '../features/gitApi/reposReducer'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import CardsList from '../components/CardsList'
 import SearchInput from '../components/SearchInput'
-import { clearRepos } from '../features/gitApi/reposReducer'
 import useGetRepos from '../hooks/useGetRepos'
 
 export default function Repos() {
@@ -16,6 +17,10 @@ export default function Repos() {
     page: 1,
     sort: 'desc',
   });
+
+  useEffect(() => {
+    dispatch(clearRepos());
+  }, [dispatch])
 
   const send = () => {
     dispatch(clearRepos());
